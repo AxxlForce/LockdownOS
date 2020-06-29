@@ -8,25 +8,25 @@ LockdownOS aims to provide pupils, students (and everybody else really) to build
 
 LockdownOS is based on Ubuntu Mate with some minor tweaks to get it running on the rpi. Why Ubuntu? Ubuntu is very user friendly and tweaked for end user desktop systems and has nice package sources. We might have to change that in the future if redistributing it is not allowed (TODO check)
 
-As the rpi has no Intel based CPU a lot of native programs won't run if they are not explicitly build for the armhf architecture. That has become less and less of a problem as most programs are or will be available as web apps or are written in Java or .Net Core which are platform independent to start with.
+As the rpi has no Intel based CPU a lot of native programs won't run if they are not explicitly built for the armhf architecture. That has become less and less of a problem as most programs are or will be available as web apps or are written in Java or .Net Core which are platform independent to start with.
 
-# Recommend Configuration
+# Recommended Configuration
 
 This projects uses an Raspberry Pi 4 Model B as hardware platform. It will run on an a rpi3 Model B but as we're aiming for a "joy of use" situation this is the recommend HW configuration:
 
-Raspberry Pi 4 Model B 4GB RAM (performance of the 2GB versio has not been tested yet) ca 55€
+**Raspberry Pi 4 Model B 4GB RAM** (performance of the 2GB versio has not been tested yet) ca 55€
 
-64GB microSDXC UHS-I U3 (e.g. Samsung Evo Plus) ca 12€
+**64GB microSDXC UHS-I U3** (e.g. Samsung Evo Plus) ca 12€
 
-3A power supply ca 8€
+**3A power supply** ca 8€
 
-Aluminum (e.g. Armor Case) casing ca 10€
+otpional: **Aluminum (e.g. Armor Case) casing** ca 10€
 
 For a total of round about of 85€ you can build a desktop PC
 
 # Preinstalled Image
 
-Preconfigured Image for rpi4 4GB:
+<<Preconfigured Image for rpi4 4GB>>
 
 # Script
 
@@ -52,12 +52,12 @@ cd LockdownOS
 sh /script/install.sh
 
 # add rpi specific PPA and install packages
-sudo add-apt-repository ppa:ubuntu-raspi2/ppa
+sudo add-apt-repository ppa:ubuntu-raspi2/ppa # TODO hack: focal -> bionic
 sudo apt-get update
 sudo apt-get install libraspberrypi-bin libraspberrypi-dev libraspberrypi-bin-nonfree
 
 # add other PPAs
-sudo add-apt-repository -u ppa:snwh/ppa
+sudo add-apt-repository -u ppa:snwh/ppa # TODO hack: focal -> bionic
 sudo add-apt-repository -u ppa:agornostal/ulauncher
 
 # install MATE desktop environment
@@ -86,7 +86,7 @@ gsettings set org.mate.interface icon-theme 'Paper'
 gsettings set org.mate.interface enable-animations false
 gsettings set org.mate.interface gtk-decoration-layout 'close,minimize,maximize:'
 
-# write rpi configuration
+# write rpi configuration TODO !! check model before we do that !!
 cat >>/boot/firmware/usercfg.txt <<EOL
 
 # hw accelerated graphics on rpi4
@@ -96,16 +96,7 @@ dtoverlay=vc4-fkms-v3d
 over_voltage=2
 arm_freq=1800
 EOL
-
-
-
 ```
-
- 
-
-"Hack PPAs" in /etc/apt/sources.list.d -> focal zu bionic ändern
-
-
 
 
 
