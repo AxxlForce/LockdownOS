@@ -33,3 +33,8 @@ sh apt.sh
 # refine Visual Studio Code launcher
 sed -i 's/\(Name=\)\(.*\)/\1Visual Studio Code/' /usr/share/applications/code-oss.desktop
 sed -i 's/\(Icon=\)\(.*\)/\1\/usr\/share\/icons\/Paper\/512x512\/apps\/visual-studio-code.png/' /usr/share/applications/code-oss.desktop
+
+# install Reaper DAW
+wget https://www.reaper.fm/files/6.x/reaper612c_linux_armv7l.tar.xz -P ~/Downloads/ && cd ~/Downloads
+tar -xvf reaper612c_linux_armv7l.tar.xz
+sudo mv reaper_linux_armv7l/REAPER/ /opt/reaper && rm -rf reaper_linux_armv7l

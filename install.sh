@@ -7,7 +7,7 @@ sudo add-apt-repository -y ppa:snwh/ppa
 sudo sed -i 's/focal/bionic/g' /etc/apt/sources.list.d/snwh-ubuntu-ppa-focal.list*
 sudo add-apt-repository -y ppa:agornostal/ulauncher
 
-sudo sh ./install_packages.sh
+sudo sh ./install_applications.sh
 
 sh ./configure_pi.sh
 
