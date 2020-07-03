@@ -38,73 +38,28 @@ Please notice: RAM is critical, because desktop systems require a fair amount of
 
 # Script
 
-The entire setup process can be run as a script similar to RetroPie
+The entire setup process can be run as script similar to RetroPie
 
 Get Raspberry Pi Imager from https://www.raspberrypi.org/downloads/
 
 Populate your SD card with Ubuntu 20.04 LTS 32Bit (don't use 64bit, 4GB RAM systems don't benefit from it anyway)
 
-Insert the SD card in your rpi and boot it up
+Insert the SD card in your rpi, connect it to the internet via Ethernet and boot it up
 
 Install LockdownOS via script
 
 ```shell
-# install git
-sudo apt-get install git
+# OPTIONAL: set keyboard layout
+sudo dpkg-reconfigure keyboard-configuration
 
-# clone this repository
+# clone this repository and cd into it
+sudo apt-get install git
+mkdir -p ~/Downloads && cd ~/Downloads;
 git clone https://github.com/AxxlForce/LockdownOS.git
+cd LockdownOS
 
 # install via script and get a coffee... or two
-cd LockdownOS
-sh /script/install.sh
-
-# add rpi specific PPA and install packages
-sudo add-apt-repository ppa:ubuntu-raspi2/ppa # TODO hack: focal -> bionic
-sudo apt-get update
-sudo apt-get install libraspberrypi-bin libraspberrypi-dev libraspberrypi-bin-nonfree
-
-# add other PPAs
-sudo add-apt-repository -u ppa:snwh/ppa # TODO hack: focal -> bionic
-sudo add-apt-repository -u ppa:agornostal/ulauncher
-
-# install MATE desktop environment
-sudo apt-get install ubuntu-mate-desktop 
-
-# remove "leftover" package(s)
-sudo apt-get remove gnome-control-center
-
-# install packaged apps
-sudo apt-get install vlc chromium-browser thunderbird gimp pinta ulauncher adapta-gtk-theme paper-icon-theme
-
-# install all non packaged stuff
-# https://packagecloud.io/headmelted/codebuilds/gpgkey
-. <( wget -O - https://code.headmelted.com/installers/apt.sh )
-
-# other
-# remove plank item in dock
-gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ show-dock-item false
-
-# enable natural scrolling
-# Option "NaturalScrolling" "on"
-
-# UI configuration
-gsettings set org.mate.interface gtk-theme 'Adapta-Nokto-Eta'
-gsettings set org.mate.interface icon-theme 'Paper'
-gsettings set org.mate.interface enable-animations false
-gsettings set org.mate.interface gtk-decoration-layout 'close,minimize,maximize:'
-gsettings set org.mate.background picture-filename Downloads/LockdownOS_wallpaper_2.jpg
-
-# write rpi configuration TODO !! check model before we do that !!
-cat >>/boot/firmware/usercfg.txt <<EOL
-
-# hw accelerated graphics on rpi4
-dtoverlay=vc4-fkms-v3d
-
-# mild overclocking
-over_voltage=2
-arm_freq=1800
-EOL
+sh ./install.sh
 ```
 
 
