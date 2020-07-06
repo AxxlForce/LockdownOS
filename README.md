@@ -54,9 +54,7 @@ sudo dpkg-reconfigure keyboard-configuration
 
 # clone this repository and cd into it
 sudo apt-get install git
-mkdir -p ~/Downloads && cd ~/Downloads;
-git clone https://github.com/AxxlForce/LockdownOS.git
-cd LockdownOS
+git clone https://github.com/AxxlForce/LockdownOS.git ~/Downloads/LockdownOS && cd ~/Downloads/LockdownOS
 
 # install via script and get a coffee... or two
 sh ./install.sh

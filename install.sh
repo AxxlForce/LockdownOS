@@ -2,12 +2,12 @@
 
 # add PPAs (some need to be modified in order to work with 20.04)
 sudo add-apt-repository -y ppa:ubuntu-raspi2/ppa
-sudo sed -i 's/focal/bionic/g' /etc/apt/sources.list.d/ubuntu-raspi2-ubuntu-focal.list*
+sudo sed -i 's/focal/bionic/g' /etc/apt/sources.list.d/ubuntu-raspi2-ubuntu-ppa-focal.list*
 sudo add-apt-repository -y ppa:snwh/ppa
 sudo sed -i 's/focal/bionic/g' /etc/apt/sources.list.d/snwh-ubuntu-ppa-focal.list*
 sudo add-apt-repository -y ppa:agornostal/ulauncher
 
-sudo sh ./install_applications.sh
+sh ./install_applications.sh
 
 sh ./configure_pi.sh
 

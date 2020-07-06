@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# startup x server
+startx -- :2 vt1 &
+sleep 20
+
 # set basic MATE layout
-DISPLAY=:0 mate-tweak --layout pantheon
+DISPLAY=:2 mate-tweak --layout pantheon
+sleep 10
 
 # remove plank item in dock
 gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ show-dock-item false
@@ -17,14 +22,10 @@ gsettings set org.mate.interface gtk-decoration-layout 'close,minimize,maximize:
 gsettings set org.mate.Marco.general button-layout 'close,minimize,maximize:'
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/los_wallpaper_v3.jpg
 
-# configure lightdm greeter
-cat > sudo /etc/lightdm/slick-greeter.conf <<EOL
-[Greeter]
-draw-grid=true
-theme-name=Adapta-Nokto-Eta
-icon-theme-name=Paper
-background=/usr/share/backgrounds/los_wallpaper_v3.jpg
-EOL
+# TODO fails if slick-greeter.conf doesnt exist yet
+
+# configure lightdm greeter 
+sudo cp configfiles/slick-greeter.conf /etc/lightdm
 
 # enable natural scrolling
 # Option "NaturalScrolling" "on"
