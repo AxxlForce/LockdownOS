@@ -5,10 +5,13 @@ sudo apt-get update
 # install rpi specific packages
 sudo apt-get install -y libraspberrypi-bin libraspberrypi-dev libraspberrypi-bin-nonfree
 
+# configure default display manager so we don't get asked about it when installing the desktop environment
+sudo cp ./resources/configfiles/default-display-manager /etc/X11
+
 # update & install packaged apps
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
-sudo apt-get install -y ubuntu-mate-desktop vlc chromium-browser thunderbird gimp pinta ulauncher gnome-games adapta-gtk-theme paper-icon-theme
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ubuntu-mate-desktop vlc chromium-browser thunderbird gimp pinta ulauncher gnome-games adapta-gtk-theme paper-icon-theme
 
 # remove "leftover" packages
 sudo apt-get autoremove -y ubuntu-session gdm3 gnome-control-center fwupd

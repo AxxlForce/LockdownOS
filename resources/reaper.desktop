@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Reaper
+Comment=Digital Audio Workstation
+Exec=/opt/reaper/reaper
+Icon=/opt/reaper/Resources/main.png
+Type=Application
+Keywords=audio;daw;recording;
