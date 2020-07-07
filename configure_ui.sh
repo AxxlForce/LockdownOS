@@ -12,7 +12,7 @@ sleep 10
 gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ show-dock-item false
 
 # copy our wallpaper
-sudo cp ./resources/los_wallpaper_v3.jpg /usr/share/backgrounds/
+sudo cp ./resources/wallpapers/los_wallpaper_v3.jpg /usr/share/backgrounds/
 
 # other UI configuration
 gsettings set org.mate.interface gtk-theme 'Adapta-Nokto-Eta'
@@ -22,10 +22,9 @@ gsettings set org.mate.interface gtk-decoration-layout 'close,minimize,maximize:
 gsettings set org.mate.Marco.general button-layout 'close,minimize,maximize:'
 gsettings set org.mate.background picture-filename /usr/share/backgrounds/los_wallpaper_v3.jpg
 
-# TODO fails if slick-greeter.conf doesnt exist yet
-
 # configure lightdm greeter 
-sudo cp configfiles/slick-greeter.conf /etc/lightdm
+sudo apt-get install -y lightdm
+sudo cp ./resources/configfiles/slick-greeter.conf /etc/lightdm
 
 # enable natural scrolling
 # Option "NaturalScrolling" "on"
